@@ -1,0 +1,56 @@
+.radiochannel{
+    flex: 1;
+    margin: 0.5vh;
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+    grid-template-areas: 
+    'title title title'
+    'img img img'
+    'btn btn btn'
+    'likeBTN likeBTN likeBTN';
+
+        img{
+            grid-area: img;
+            max-width: 15vh;
+            max-height: 15vh;
+            border-radius: 0.5vh;
+            margin: auto;
+        }
+    h3{
+        grid-area: title;
+        margin: auto;
+    }
+    .listenBTN{
+        grid-area: btn;
+        margin: auto;
+        width: 10vh;
+        margin-top: 0.2vh;
+        border: 2px solid lightgray;
+        height: 2.5vh;
+        border-radius: 0.5vh;
+        color: black;
+        font-weight: bold;
+    }
+    .listenBTN:hover{
+        background-color: lightgray;
+        cursor: pointer;
+    }
+
+    .likeBTN{
+        grid-area: likeBTN;
+        margin: auto;
+        width: 15vh;
+        margin-top: 0.2vh;
+        border: 2px solid lightgray;
+        height: 2.5vh;
+        border-radius: 0.5vh;
+        color: black;
+        font-weight: bold;
+        &:hover{
+            cursor: pointer;
+            background-color:lightgray;
+        }
+    }
+
+}
+

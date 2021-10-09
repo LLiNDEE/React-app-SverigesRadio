@@ -1,0 +1,71 @@
+.RadioChannels_container{
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.pageDisplay_div{
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-areas: 
+    'arrowL text arrowR';
+
+    .arrow_icon_left{
+        grid-area: arrowL;
+        margin: auto;
+        margin-right: -8%;
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+            border-radius: 1vh;
+        }
+    }
+
+    .arrow_icon_right{
+        grid-area: arrowR;
+        margin: auto;
+        margin-left: -8%;
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+            border-radius: 1vh;
+        }
+    }
+
+    .currentPageText{
+        grid-area: text;
+        color: dimgray;
+        margin: auto;
+    }
+
+}
+
+.Radiochannels_showFavorites_div{
+    text-align: left;
+    margin-left: 1vh;
+    margin-top: 1vh;
+    grid-area: btn;
+    button{
+        height: 3vh;
+        width: 15vh;
+        border: 1px solid lightgray;
+        border-radius: 0.5vh;
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+        }
+    }
+
+}
+
+.radiochannels_top{
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-areas: 
+    'btn btn btn'
+    'title title title';
+    h1{
+        grid-area: title;
+    }
+}

@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@import'./partials/header';
+
+@import'./partials/main';
+
+@import'./partials/RadioChannels';
+
+@import'./partials/RadioChannel';
+
+@import'./partials/channelListen';
+
+@import'./partials/AudioElement';

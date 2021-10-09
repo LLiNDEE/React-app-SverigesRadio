@@ -1,0 +1,45 @@
+.channelListen_div{
+    display: grid;
+    grid-template-columns: 33% auto 33%;
+    grid-template-areas:
+    'btn btn btn' 
+    'title title title'
+    'img img img'
+    'tagL tagL tagL'
+    'audio audio audio';
+
+    h3{
+        grid-area: title;
+        margin: auto;
+    }
+    img{
+        grid-area: img;
+        max-width: 20vh;
+        max-height: 20vh;
+        border-radius: 0.5vh;
+        margin: auto;
+    }
+    p{  
+        grid-area: tagL;
+        margin: auto;
+    }
+
+    .audioEl{
+        grid-area: audio;
+        margin: auto;
+    }
+
+    .goBackBTN{
+        grid-area: btn;
+        width: 20vh;
+        height: 3vh;
+        margin: 1vh;
+        border-radius: 0.5vh;
+        border: 1px solid lightgray;
+        &:hover{
+            cursor: pointer;
+            background-color:lightgray;
+        }
+    }
+
+}

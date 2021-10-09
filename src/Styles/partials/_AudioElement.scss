@@ -1,0 +1,32 @@
+.audioElement_div{
+
+    #stopICON{
+        background-color: white;
+        border: none;
+        height: 4vh;
+        width: 4vh;
+    }
+    #playICON{
+        background-color: white;
+        border: none;
+        height: 4vh;
+        width: 4vh;
+    }
+    .playBTN{
+        border: none;
+        background-color: white;
+    }
+    .stopBTN{
+        border: none;
+        background-color: white;
+    }
+    
+    .volume-down-btn:hover{
+        cursor: pointer;
+    }
+
+    .volume-off-btn:hover{
+        cursor: pointer;
+    }
+
+}
