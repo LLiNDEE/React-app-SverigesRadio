@@ -1,0 +1,58 @@
+.searchResult_container{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 5vh;
+    // border: 1px solid rgb(128, 126, 126);
+    border: 1px solid black;
+    border-radius: 0.5vh;
+    width: 50vh;
+
+    .episode{
+        display: flex;
+        max-width: 50vh;
+        margin: auto;
+        margin: 1vh;
+        max-height: 10vh;
+        border: 1px solid lightgray;
+        border-collapse: collapse;
+        &:hover{
+            background-color: rgba(211, 211, 211, 0.479);
+        }
+        img{
+            flex: 1;
+            max-height: 5vh;
+            max-width: 5vh;
+        }
+
+        .publish_date{
+            
+            padding-left: 1vh;
+        }
+        .episode_title{
+            padding-left: 1vh;
+            grid-area: title;
+        }
+        .e_container{
+            flex: 1;
+            text-align:left;
+        }
+        .episode_listenBTN{
+            width: 5vh;
+            height: 3vh;
+            border: 1px solid lightgray;
+            border-radius: 0.5vh;
+            margin: 1vh;
+            &:hover{
+                cursor: pointer;
+                background-color:lightgray;
+            }
+        }
+
+    }
+}
+
+.searchResult_totalHits_div{
+    text-align: right;
+    width: 50vh;
+    margin: auto;
+}

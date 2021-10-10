@@ -11,6 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 // IMported components
 import RadioChannel from './RadioChannel';
 import ChannelListenEl from './ChannelListen/ChannelListen';
+import FavoriteChannelList from './FavoriteChannel/FavoriteChannelList';
 
 
 
@@ -19,6 +20,7 @@ export default function RadioChannels() {
     const [RadioChannels, setRadioChannels] = useState([]);
     const [ListenStatus, setListenStatus] = useState(false);
     const [channelListen, setChannelListen] = useState("");
+    const [viewFavChannel, setViewFavChannel] = useState(false);
 
     const [nextPage, setNextPage] = useState("");
     const [prevPage, setPrevPage] = useState("");
@@ -83,14 +85,18 @@ export default function RadioChannels() {
         getPrograms(prevPage);
     }
 
+    function viewFavoriteChannelHandler(){
+        setViewFavChannel(true);
+    }
+
     function render(){
-        if(!ListenStatus){
+        if(!ListenStatus && !viewFavChannel){
             return(
                 <>
                 <div className="radiochannels_top">
                     <h1>Radio kanaler</h1>
                     <div className="Radiochannels_showFavorites_div">
-                        <button> Visa favoritkanaler</button>
+                        <button onClick={viewFavoriteChannelHandler}> Visa favoritkanaler</button>
                     </div>
                 </div>
                 <div className="pageDisplay_div">
@@ -106,7 +112,12 @@ export default function RadioChannels() {
                 </>
             );
         }
-        if(ListenStatus){
+        if(viewFavChannel && !ListenStatus){
+            return (
+                <FavoriteChannelList/>
+            )
+        }
+        if(ListenStatus && !viewFavChannel){
             return(
                 <>
                     <ChannelListenEl/>
@@ -116,7 +127,7 @@ export default function RadioChannels() {
     }
 
     return (
-        <Context.Provider value={{RadioChannels, setListenStatus, setChannelListen, channelListen, favoriteChannels, setFavoriteChannels}} >
+        <Context.Provider value={{RadioChannels, setListenStatus, setChannelListen, channelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel}} >
             {render()}
         </Context.Provider>
     )

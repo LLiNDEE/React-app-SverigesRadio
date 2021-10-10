@@ -22,7 +22,7 @@ main {
   margin-top: 5vh;
   -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.336);
           box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.336);
-  height: 500px;
+  height: 200vh;
 }
 
 .RadioChannels_container {
@@ -275,5 +275,110 @@ main {
 
 .audioElement_div .volume-off-btn:hover {
   cursor: pointer;
+}
+
+.SearchContainer {
+  margin-bottom: 5vh;
+}
+
+.SearchContainer .searchForm .searchInput {
+  height: 4vh;
+  width: 25vh;
+  border-radius: 0.5vh;
+  border: 2px solid lightgray;
+}
+
+.searchResult_container {
+  margin: auto;
+  text-align: center;
+  margin-bottom: 5vh;
+  border: 1px solid black;
+  border-radius: 0.5vh;
+  width: 50vh;
+}
+
+.searchResult_container .episode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 50vh;
+  margin: auto;
+  margin: 1vh;
+  max-height: 10vh;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+}
+
+.searchResult_container .episode:hover {
+  background-color: rgba(211, 211, 211, 0.479);
+}
+
+.searchResult_container .episode img {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  max-height: 5vh;
+  max-width: 5vh;
+}
+
+.searchResult_container .episode .publish_date {
+  padding-left: 1vh;
+}
+
+.searchResult_container .episode .episode_title {
+  padding-left: 1vh;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: title;
+}
+
+.searchResult_container .episode .e_container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: left;
+}
+
+.searchResult_container .episode .episode_listenBTN {
+  width: 5vh;
+  height: 3vh;
+  border: 1px solid lightgray;
+  border-radius: 0.5vh;
+  margin: 1vh;
+}
+
+.searchResult_container .episode .episode_listenBTN:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.searchResult_totalHits_div {
+  text-align: right;
+  width: 50vh;
+  margin: auto;
+}
+
+.EpisodeListen_div {
+  width: 100vh;
+  margin: auto;
+  margin-top: 5vh;
+  border: 5px solid lightgray;
+  border-radius: 0.5vh;
+  -webkit-box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.322);
+          box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.322);
+}
+
+.EpisodeListen_div img {
+  max-width: 15vh;
+  max-height: 15vh;
+}
+
+.EpisodeListen_div .description {
+  color: darkgray;
+}
+
+.EpisodeListen_div audio {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

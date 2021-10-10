@@ -7,12 +7,13 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function RadioChannel({ channel }) {
 
-    const {setListenStatus, setChannelListen, favoriteChannels, setFavoriteChannels} = useContext(Context);
+    const {setListenStatus, setChannelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel} = useContext(Context);
     const [favStatus, setFavStatus] = useState(false);
 
     function ChannelListenHandler(){
         setListenStatus(true);
         setChannelListen(channel);
+        setViewFavChannel(false);
     }
 
     useEffect(()=>{
