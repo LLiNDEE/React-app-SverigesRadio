@@ -49,6 +49,21 @@
         }
 
     }
+
+    .searchResult_pagesBTN{
+        display: flex;
+        margin: auto;
+        .arrow_icon_left{
+            flex: 1;
+        }
+        .arrow_icon_right{
+            flex: 1;
+        }
+        p{
+            flex: 1;
+        }
+    }
+
 }
 
 .searchResult_totalHits_div{

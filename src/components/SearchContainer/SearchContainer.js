@@ -48,8 +48,39 @@ export default function SearchContainer() {
         }
     }
 
+    async function getEpisodes(page){
+        try{
+            if(searchTerm === "") return;
+
+            let response = await fetch(page);
+            response = await response.json();
+            // console.log(response);
+            setEpisodes(response.episodes);
+            setTotalPages(response.pagination.totalpages);
+            setTotalHits(response.pagination.totalhits);
+            setNextPage(response.pagination.nextpage);
+            setCurrentPage(response.pagination.page);
+    
+            if(response.pagination.previouspage){
+                setPrevPage(response.pagination.previouspage);
+            }
+        }catch(error){
+            console.log(error.message);
+        }
+    }
+
+    function nextPageHandler(){
+        if(currentPage == totalPages)return;
+        getEpisodes(nextPage);
+    }
+
+    function prevPageHandler(){
+        if(currentPage == 1) return;
+        getEpisodes(prevPage);
+    }
+
     return (
-        <EpisodeContext.Provider value={{searchTerm, setSearchTerm, episodes, totalHits, totalPages, currentPage, setEpisodeListen, setListeningStatus, EpisodeListen}} >
+        <EpisodeContext.Provider value={{searchTerm, setSearchTerm, episodes, totalHits, totalPages, currentPage, setEpisodeListen, setListeningStatus, EpisodeListen, nextPageHandler, prevPageHandler}} >
         <div className="SearchContainer">
                 {renderListen()}
                 <h1>Sök...</h1>

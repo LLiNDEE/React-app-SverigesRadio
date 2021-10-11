@@ -64,7 +64,6 @@ export default function AudioElement({ duration ,audioSRC }) {
     function playHandler(){
         setPauseStatus(false);
         audioEl.current.play();
-        audioEl.current.load();
     }
 
     function toggleBtnHandler(){

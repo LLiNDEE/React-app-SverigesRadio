@@ -27,7 +27,6 @@ export default function Episode({ episode }) {
         }
 
         let _date = `${year}-${month}-${day}`;
-        console.log(_date);
         return (_date);
     }
 

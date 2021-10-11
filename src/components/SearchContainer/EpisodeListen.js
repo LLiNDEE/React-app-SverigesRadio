@@ -12,9 +12,13 @@ export default function EpisodeListen() {
         console.log(EpisodeListen);
     },[])
 
+    function goBackHandler(){
+        setListeningStatus(false);
+    }
+
     return (
         <div className="EpisodeListen_div">
-            <button className="goBackBTN" >Gå tillbaka</button>
+            <button onClick={goBackHandler} className="goBackBTN" >Gå tillbaka</button>
             <h3>Lyssnar på {EpisodeListen.title}</h3>
             <img src={EpisodeListen.imageurl}/>
             <p className="description">{EpisodeListen.description}</p>
