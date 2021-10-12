@@ -70,6 +70,12 @@
         }
     }
 
+    .searchResult_showDetailed_btn{
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
 }
 
 .searchResult_totalHits_div{

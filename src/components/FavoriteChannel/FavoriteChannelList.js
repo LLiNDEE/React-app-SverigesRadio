@@ -17,6 +17,8 @@ export default function FavoriteChannelList(){
     const [totalPages, setTotalPages] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
 
+    // const [testList, setTestList] = useState([]);
+
     const channelsPerPage = 10;
     const pagesVisited = pageNumber * channelsPerPage;
 
@@ -46,9 +48,17 @@ export default function FavoriteChannelList(){
         // }));
         // console.log(favoriteChannels.splice(pagesVisited,maxPAGE));
         // console.log(favoriteChannels);
-        return (favoriteChannels.splice(0,10).map((item)=>(
+
+
+        // setTestList(favoriteChannels.splice(0,10));
+        
+        // Render all favorite channels. No pages...
+        return (favoriteChannels.map((item)=>(
             <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
         )));
+        // return (testList.map((item)=>{
+        //     <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
+        // }));
     }
 
     // function renderCurrentPage(page){

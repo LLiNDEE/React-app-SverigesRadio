@@ -69,6 +69,29 @@ export default function SearchContainer() {
         }
     }
 
+    async function getEpisodesByPage(pageNUM){
+        try{
+            if(searchTerm == "") return;
+
+            let response = await fetch(`https://api.sr.se/api/v2/episodes/search/?query=${searchTerm}&format=json&page=${pageNUM}`);
+            response = await response.json();
+
+            setEpisodes(response.episodes);
+            setTotalPages(response.pagination.totalpages);
+            setTotalHits(response.pagination.totalhits);
+            setNextPage(response.pagination.nextpage);
+            setCurrentPage(response.pagination.page);
+
+            if(response.pagination.previouspage){
+                setPrevPage(response.pagination.previouspage);
+            }
+
+
+        }catch(error){
+            console.log(error.message);
+        }
+    }
+
     function nextPageHandler(){
         if(currentPage == totalPages)return;
         getEpisodes(nextPage);
@@ -80,7 +103,7 @@ export default function SearchContainer() {
     }
 
     return (
-        <EpisodeContext.Provider value={{searchTerm, setSearchTerm, episodes, totalHits, totalPages, currentPage, setEpisodeListen, setListeningStatus, EpisodeListen, nextPageHandler, prevPageHandler}} >
+        <EpisodeContext.Provider value={{searchTerm, setSearchTerm, episodes, totalHits, totalPages, currentPage, setEpisodeListen, setListeningStatus, EpisodeListen, nextPageHandler, prevPageHandler, getEpisodesByPage}} >
         <div className="SearchContainer">
                 {renderListen()}
                 <h1>Sök...</h1>

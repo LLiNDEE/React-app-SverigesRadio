@@ -386,6 +386,10 @@ main {
           flex: 1;
 }
 
+.searchResult_container .searchResult_showDetailed_btn:hover {
+  cursor: pointer;
+}
+
 .searchResult_totalHits_div {
   text-align: right;
   width: 50vh;
@@ -458,5 +462,115 @@ main {
 .EpisodeListen_div .goBackBTN:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+.searchResult_detailed {
+  margin-top: 2vh;
+}
+
+.searchResult_detailed input::-webkit-outer-spin-button,
+.searchResult_detailed input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.searchResult_detailed input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.searchResult_detailed .episode_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.404);
+          box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.404);
+  width: 200vh;
+  margin: auto;
+  margin-top: 1vh;
+}
+
+.searchResult_detailed .episode_container .episode {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 16%;
+          flex: 1 0 16%;
+  margin: 1vh;
+}
+
+.searchResult_detailed .episode_container button {
+  width: 15vh;
+  height: 2.5vh;
+  border: 1px solid lightgray;
+  border-radius: 0.5vh;
+}
+
+.searchResult_detailed .episode_container button:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.searchResult_detailed .episode_container img {
+  max-width: 20vh;
+  max-height: 20vh;
+  border-radius: 0.5vh;
+}
+
+.searchResult_detailed .searchResult_pagesBTN {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .arrow_icon_left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .arrow_icon_left:hover {
+  cursor: pointer;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .arrow_icon_right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .arrow_icon_right:hover {
+  cursor: pointer;
+}
+
+.searchResult_detailed .searchResult_pagesBTN p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.searchResult_detailed .pageNum_input {
+  height: 3vh;
+  width: 7vh;
+  border-radius: 0.5vh;
+  border: 1px solid #8b8b8b;
+}
+
+.searchResult_detailed .pageNum_input:hover {
+  cursor: pointer;
+  background-color: rgba(139, 139, 139, 0.2);
+}
+
+.searchResult_detailed .pageNum_btn {
+  height: 3vh;
+  width: 6vh;
+  margin-left: 0.5vh;
+  border-radius: 0.5vh;
+  border: 1px solid #8b8b8b;
+}
+
+.searchResult_detailed .pageNum_btn:hover {
+  cursor: pointer;
+  background-color: rgba(139, 139, 139, 0.6);
 }
 /*# sourceMappingURL=style.css.map */
