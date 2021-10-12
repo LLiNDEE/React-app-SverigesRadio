@@ -29,7 +29,7 @@ export default function RadioChannel({ channel }) {
 
     function removeFromFavoritesHandler(){
         setFavoriteChannels(prev=>{
-           return prev.filter(item=>item.id == channel.id)
+           return prev.filter(item=>item.id != channel.id)
         });
         setFavStatus(false); 
     }

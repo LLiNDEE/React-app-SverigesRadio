@@ -7,7 +7,7 @@ import AudioEl from './EpisodeAudioElement';
 export default function EpisodeListen() {
 
     const {EpisodeListen, setListeningStatus} = useContext(EpisodeContext);
-
+    
     useEffect(()=>{
         console.log(EpisodeListen);
     },[])
@@ -22,7 +22,10 @@ export default function EpisodeListen() {
             <h3>Lyssnar på {EpisodeListen.title}</h3>
             <img src={EpisodeListen.imageurl}/>
             <p className="description">{EpisodeListen.description}</p>
-            <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/>
+            <div className="audioEl">
+                {/* <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> */}
+                {(EpisodeListen.listenpodfile) ? <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> : "Finns ingen ljudfil...."}
+            </div>
     </div>
     )
 }

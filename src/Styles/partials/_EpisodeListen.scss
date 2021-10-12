@@ -5,13 +5,8 @@
     margin-top: 5vh;
     border: 5px solid lightgray;
     border-radius: 0.5vh;
+    height: 50vh;
     box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.322);
-
-
-    .description{
-        color: darkgray;
-    }
-
     display: grid;
     grid-template-columns: 33% auto 33%;
     grid-template-areas:
@@ -20,6 +15,12 @@
     'img img img'
     'tagL tagL tagL'
     'audio audio audio';
+
+    .description{
+        color: darkgray;
+        grid-area: tagL;
+    }
+
 
     h3{
         grid-area: title;

@@ -55,9 +55,15 @@
         margin: auto;
         .arrow_icon_left{
             flex: 1;
+            &:hover{
+                cursor: pointer;
+            }
         }
         .arrow_icon_right{
             flex: 1;
+            &:hover{
+                cursor: pointer;
+            }
         }
         p{
             flex: 1;

@@ -366,10 +366,18 @@ main {
           flex: 1;
 }
 
+.searchResult_container .searchResult_pagesBTN .arrow_icon_left:hover {
+  cursor: pointer;
+}
+
 .searchResult_container .searchResult_pagesBTN .arrow_icon_right {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.searchResult_container .searchResult_pagesBTN .arrow_icon_right:hover {
+  cursor: pointer;
 }
 
 .searchResult_container .searchResult_pagesBTN p {
@@ -390,6 +398,7 @@ main {
   margin-top: 5vh;
   border: 5px solid lightgray;
   border-radius: 0.5vh;
+  height: 50vh;
   -webkit-box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.322);
           box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.322);
   display: -ms-grid;
@@ -401,6 +410,10 @@ main {
 
 .EpisodeListen_div .description {
   color: darkgray;
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: tagL;
 }
 
 .EpisodeListen_div h3 {

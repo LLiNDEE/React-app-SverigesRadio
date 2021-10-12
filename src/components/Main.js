@@ -8,6 +8,7 @@ export default function Main() {
     return (
         <main>
             <RadioChannels/>
+            <hr/>
             <SearchContainer/>
         </main>
     )

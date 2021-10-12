@@ -28,6 +28,7 @@ export default function SearchResult(){
             {episodes.map(episode=>(
                 <Episode key={episode.id} episode={episode}/>
             ))}
+            <p>Visa detaljerad lista</p>
         </div>
         </>
     )
