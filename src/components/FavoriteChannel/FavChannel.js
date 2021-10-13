@@ -2,8 +2,8 @@ import React,{useContext, useState, useEffect} from 'react';
 import Context from '../Context';
 
 // Imported icons
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function FavChannel({ channel, favoriteChannels }) {
 
@@ -84,9 +84,13 @@ export default function FavChannel({ channel, favoriteChannels }) {
     return (
             <div className="radiochannel">
                 <h3>{channel.name}</h3>
-                    <img src={channel.image} alt="Kanal bild"/>
+                <div className="channel_img_heart_div">
+                    <img src={(channel.image) ? channel.image : "https://www.jazzmusicarchives.com/images/covers/quantic(united-kingdom)-the-sheepskin-sessions-20210219105013.jpg"}/>
+                    
+                    {(favStatus) ? <FavoriteIcon sx={{ fontSize: 65 }} onClick={removeFromFavoritesHandler} className="channel_heartICON_Half ColorRED hidden" /> : <FavoriteBorderIcon onClick={addToFavoritesHandler} sx={{ fontSize: 65 }} className="channel_heartICON_Half hidden"/>}
+                </div>
                 <button className="listenBTN" onClick={ChannelListenHandler}>Lyssna</button>
-                {(favStatus) ? <button className="likeBTN" onClick={removeFromFavoritesHandler}>Ta bort från favoriter</button> : <button className="likeBTN" onClick={addToFavoritesHandler}>Lägg till i favoriter</button>}
+                {/* {(favStatus) ? <button className="likeBTN" onClick={removeFromFavoritesHandler}>Ta bort från favoriter</button> : <button className="likeBTN" onClick={addToFavoritesHandler}>Lägg till i favoriter</button>} */}
             </div>
     )
 }

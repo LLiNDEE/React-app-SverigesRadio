@@ -140,15 +140,19 @@ main {
       grid-template-areas: 'title title title' 'img img img' 'btn btn btn' 'likeBTN likeBTN likeBTN';
 }
 
-.radiochannel img {
+.radiochannel .channel_img_heart_div {
+  position: relative;
   -ms-grid-row: 3;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-area: img;
+  margin: auto;
+}
+
+.radiochannel .channel_img_heart_div img {
   max-width: 15vh;
   max-height: 15vh;
   border-radius: 0.5vh;
-  margin: auto;
 }
 
 .radiochannel h3 {
@@ -197,6 +201,39 @@ main {
 .radiochannel .likeBTN:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+.radiochannel .hidden {
+  display: none;
+}
+
+.radiochannel .channel_heartICON_Half {
+  position: absolute;
+  left: 4vh;
+  right: 0vh;
+  bottom: 5vh;
+  color: lightgray;
+}
+
+.radiochannel .channel_heartICON_Half:hover {
+  cursor: pointer;
+}
+
+.radiochannel .channel_img_heart_div:hover .channel_heartICON_Half {
+  display: block;
+}
+
+.radiochannel .channel_img_heart_div:hover {
+  background-color: black;
+  border-radius: 0.5vh;
+}
+
+.radiochannel .channel_img_heart_div:hover img {
+  opacity: 50%;
+}
+
+.radiochannel .ColorRED {
+  color: red;
 }
 
 .channelListen_div {
