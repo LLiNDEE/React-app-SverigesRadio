@@ -5,6 +5,8 @@ import Context from './Context';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
+import {FaRegHeart} from 'react-icons/fa';
+
 export default function RadioChannel({ channel }) {
 
     const {setListenStatus, setChannelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel} = useContext(Context);
@@ -29,7 +31,7 @@ export default function RadioChannel({ channel }) {
 
     function removeFromFavoritesHandler(){
         setFavoriteChannels(prev=>{
-           return prev.filter(item=>item.id == channel.id)
+           return prev.filter(item=>item.id != channel.id)
         });
         setFavStatus(false); 
     }
@@ -60,9 +62,13 @@ export default function RadioChannel({ channel }) {
             <div className="radiochannel">
 
                 <h3>{channel.name}</h3>
-                    <img src={channel.image}/>
+                <div className="channel_img_heart_div">
+                    <img src={(channel.image) ? channel.image : "https://www.jazzmusicarchives.com/images/covers/quantic(united-kingdom)-the-sheepskin-sessions-20210219105013.jpg"}/>
+                    
+                    {(favStatus) ? <FavoriteIcon sx={{ fontSize: 65 }} onClick={removeFromFavoritesHandler} className="channel_heartICON_Half ColorRED hidden" /> : <FavoriteBorderIcon onClick={addToFavoritesHandler} sx={{ fontSize: 65 }} className="channel_heartICON_Half hidden"/>}
+                </div>
                 <button className="listenBTN" onClick={ChannelListenHandler}>Lyssna</button>
-                {(favStatus) ? <button className="likeBTN" onClick={removeFromFavoritesHandler}>Ta bort från favoriter</button> : <button className="likeBTN" onClick={addToFavoritesHandler}>Lägg till i favoriter</button>}
+                {/* {(favStatus) ? <button className="likeBTN" onClick={removeFromFavoritesHandler}>Ta bort från favoriter</button> : <button className="likeBTN" onClick={addToFavoritesHandler}>Lägg till i favoriter</button>} */}
             </div>
     )
 }

@@ -17,7 +17,7 @@ export default function ChannelListen() {
         <div className="channelListen_div">
             <button className="goBackBTN" onClick={goBackHandler}>Gå tillbaka</button>
             <h3>Lyssnar på {channelListen.name}</h3>
-            <img src={channelListen.image}/>
+            <img src={channelListen.image} alt="Kanal bild"/>
             <p>{channelListen.tagline}</p>
             <div className="audioEl">
                 <AudioEl audioSRC={channelListen.liveaudio.url}/>
