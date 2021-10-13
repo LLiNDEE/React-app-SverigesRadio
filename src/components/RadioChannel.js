@@ -1,5 +1,7 @@
 import React,{useContext, useState, useEffect} from 'react';
+
 import Context from './Context';
+import MainContext from './MainContext';
 
 // Imported icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -10,12 +12,15 @@ import {FaRegHeart} from 'react-icons/fa';
 export default function RadioChannel({ channel }) {
 
     const {setListenStatus, setChannelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel} = useContext(Context);
+    const {listeningStatus, setListeningStatus} = useContext(MainContext);
+
     const [favStatus, setFavStatus] = useState(false);
 
     function ChannelListenHandler(){
         setListenStatus(true);
         setChannelListen(channel);
         setViewFavChannel(false);
+        setListeningStatus(false);
     }
 
     useEffect(()=>{
