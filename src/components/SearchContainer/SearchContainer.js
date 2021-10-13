@@ -9,6 +9,8 @@ import EpisodeListenContainer from './EpisodeListen';
 
 export default function SearchContainer() {
 
+    const [favoriteEpisodes, setFavoriteEpisodes] = useState("");
+
     const [searchTerm, setSearchTerm] = useState("");
     const [episodes, setEpisodes] = useState([]);
     const [totalPages, setTotalPages] = useState("");

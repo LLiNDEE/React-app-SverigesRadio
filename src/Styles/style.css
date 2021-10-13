@@ -10,10 +10,24 @@ header {
   border: 1px solid lightgray;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.274);
           box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.274);
+  text-align: center;
 }
 
 header h1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   color: black;
+}
+
+header img {
+  max-height: 5vh;
+}
+
+header .SR-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main {
@@ -353,6 +367,10 @@ main {
   background-color: lightgray;
 }
 
+.searchResult_container .episode .hidden {
+  display: none;
+}
+
 .searchResult_container .searchResult_pagesBTN {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -496,6 +514,8 @@ main {
       -ms-flex: 1 0 16%;
           flex: 1 0 16%;
   margin: 1vh;
+  position: relative;
+  overflow: hidden;
 }
 
 .searchResult_detailed .episode_container button {
@@ -514,6 +534,46 @@ main {
   max-width: 20vh;
   max-height: 20vh;
   border-radius: 0.5vh;
+}
+
+.searchResult_detailed .episode_container .hidden {
+  display: none;
+}
+
+.searchResult_detailed .episode_container .episode:hover .episode_description {
+  display: block;
+  overflow: auto;
+  right: 0;
+  bottom: 0;
+  left: 5vh;
+  position: absolute;
+  padding: 2rem;
+  max-height: 100%;
+  margin-bottom: 2vh;
+}
+
+.searchResult_detailed .episode_container .episode:hover .episode_description p {
+  width: 20vh;
+  height: 20vh;
+  color: black;
+  margin-left: 3px;
+  cursor: default;
+}
+
+.searchResult_detailed .episode_container .episode:hover .episode_img img {
+  display: none;
+}
+
+.searchResult_detailed .episode_container .episode:hover .episode_img {
+  height: 20vh;
+  width: 20vh;
+  border: 2px solid lightgray;
+  margin: auto;
+  border-radius: 0.5vh;
+}
+
+.searchResult_detailed .searchResultDetailed_showNormalList:hover {
+  cursor: pointer;
 }
 
 .searchResult_detailed .searchResult_pagesBTN {

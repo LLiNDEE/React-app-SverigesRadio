@@ -20,9 +20,11 @@
         margin: auto;
         margin-top: 1vh;
         .episode{
-            // flex: 1;
+            //  flex: 1;
             flex: 1 0 16%;
             margin: 1vh;
+            position: relative;
+            overflow: hidden;
         }
         button{
             width: 15vh;
@@ -39,8 +41,42 @@
             max-height: 20vh;
             border-radius: 0.5vh;
         }
-    }
+        .hidden{
+            display: none;
+        }
+        .episode:hover .episode_description{
+            display: block;
+            overflow: auto;
+            right: 0;
+            bottom: 0;
+            left: 5vh;
+            position: absolute;
+            padding: 2rem;
+            max-height: 100%;
+            margin-bottom: 2vh;
+        }
+        .episode:hover .episode_description p{
+            width: 20vh;
+            height: 20vh;
+            color: black;
+            margin-left: 3px;
+            cursor: default;
+        }
+        .episode:hover .episode_img img{
+            display:none;
+        }
+        .episode:hover .episode_img{
+            height: 20vh;
+            width: 20vh;
+            border: 2px solid lightgray;
+            margin: auto;
+            border-radius: 0.5vh;
+        }
 
+    }
+    .searchResultDetailed_showNormalList:hover{
+        cursor: pointer;
+    }
     .searchResult_pagesBTN{
         display: flex;
         margin: auto;
