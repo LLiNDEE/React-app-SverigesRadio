@@ -1,6 +1,7 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 
 import EpisodeContext from '../EpisodeContext';
+import MainContext from '../MainContext';
 
 // Imported components
 import SearchForm from './SearchForm';
@@ -9,7 +10,10 @@ import EpisodeListenContainer from './EpisodeListen';
 
 export default function SearchContainer() {
 
+    const {listeningStatus, setListeningStatus} = useContext(MainContext);
+
     const [favoriteEpisodes, setFavoriteEpisodes] = useState("");
+
 
     const [searchTerm, setSearchTerm] = useState("");
     const [episodes, setEpisodes] = useState([]);
@@ -19,7 +23,7 @@ export default function SearchContainer() {
     const [totalHits, setTotalHits] = useState("");
     const [currentPage, setCurrentPage] = useState("");
 
-    const [listeningStatus, setListeningStatus] = useState(false);
+    
     const [EpisodeListen, setEpisodeListen] = useState("");
 
     useEffect(async()=>{

@@ -1,6 +1,7 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useContext} from 'react';
 
 import Context from './Context';
+import MainContext from './MainContext';
 
 //Imported icons
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -17,10 +18,17 @@ import FavoriteChannelList from './FavoriteChannel/FavoriteChannelList';
 
 export default function RadioChannels() {
 
+    const {ListenStatus, setListenStatus, rockView, setRockView,channelListen, setChannelListen} = useContext(MainContext);
+
     const [RadioChannels, setRadioChannels] = useState([]);
-    const [ListenStatus, setListenStatus] = useState(false);
-    const [channelListen, setChannelListen] = useState("");
+
+
     const [viewFavChannel, setViewFavChannel] = useState(false);
+
+    const[secretChannel, setSecretChannel] = useState("");
+    const [rockCode, setRockCode] = useState(['r','o','c','k']);
+
+    const [rockSRC, setRockSRC] = useState("https://live-bauerse-fm.sharp-stream.com/rockklassiker_instream_se_aacp?direct=true&amp;listenerid=undefined&amp;aw_0_1st.bauer_listenerid=undefined&amp;aw_0_1st.playerid=SBS_RP_WEB&amp;aw_0_1st.skey=1633703664&amp;aw_0_1st.bauer_loggedin=false&amp;aw_0_req.userConsentV2=false");
 
     const [nextPage, setNextPage] = useState("");
     const [prevPage, setPrevPage] = useState("");
@@ -89,11 +97,42 @@ export default function RadioChannels() {
         setViewFavChannel(true);
     }
 
+    function onKeyFunc(event){
+        console.log("KEY CODE -- > " + event.key);
+
+        let tryFindKey = rockCode.find(elem=> elem === event.key);
+        if(!tryFindKey){
+            setSecretChannel("");
+            return;
+        }
+
+        setSecretChannel(prev=>{
+            return prev+event.key
+        });
+    }
+
+    useEffect(()=>{
+        if(secretChannel == "rock"){
+            console.log("Rock channel unlocked!!");
+            setRockView("unlocked");
+            setSecretChannel("");
+        }
+    },[secretChannel])
+
     function render(){
+
+        if(rockView == "unlocked"){
+            return(
+                <>
+                    <ChannelListenEl audioSRC={rockSRC}/>
+                </>
+            )
+        }
+
         if(!ListenStatus && !viewFavChannel){
             return(
                 <>
-                <div className="radiochannels_top">
+                <div className="radiochannels_top" onKeyDown={onKeyFunc} tabIndex="0">
                     <h1>Radio kanaler</h1>
                     <div className="Radiochannels_showFavorites_div">
                         <button onClick={viewFavoriteChannelHandler}> Visa favoritkanaler</button>
@@ -127,7 +166,7 @@ export default function RadioChannels() {
     }
 
     return (
-        <Context.Provider value={{RadioChannels, setListenStatus, setChannelListen, channelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel}} >
+        <Context.Provider value={{RadioChannels, setListenStatus, setChannelListen, channelListen, favoriteChannels, setFavoriteChannels, setViewFavChannel, setRockView}} >
             {render()}
         </Context.Provider>
     )
