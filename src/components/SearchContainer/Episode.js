@@ -1,10 +1,12 @@
 import React,{useContext} from 'react'
 
 import EpisodeContext from '../EpisodeContext';
+import MainContext from '../MainContext';
 
 export default function Episode({ episode }) {
 
     const {setEpisodeListen, setListeningStatus} = useContext(EpisodeContext);
+    const {setListenStatus, setChannelListen, setRockView} = useContext(MainContext);
 
     function episode_date(){
         let date = episode.publishdateutc;
@@ -33,6 +35,9 @@ export default function Episode({ episode }) {
     function listenHandler(){
         setListeningStatus(true);
         setEpisodeListen(episode);
+        setListenStatus(false);
+        setRockView("");
+        setChannelListen("");
     }
 
     return (
