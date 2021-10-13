@@ -39,15 +39,16 @@ export default function EpisodeDetailed({ episode }) {
         <div className="episode">
             <div className="episode_img">
                 <img src={episode.imageurl}/>
+                <div className="episode_description hidden">
+                {/* <p>{episode.description}</p> */}
+                <p>{(episode.description.length <150) ? episode.description.trim() : episode.description.substring(0,147).trim()+"..."}</p>
+            </div>
             </div>
             <div className="e_container">
                 <h4 className="episode_title">{episode.title}</h4>
                 <p className="publish_date">Publicerad: {episode_date()}</p> 
             </div>
-            <div className="episode_description hidden">
-                {/* <p>{episode.description}</p> */}
-                <p>{(episode.description.length <150) ? episode.description.trim() : episode.description.substring(0,147).trim()+"..."}</p>
-            </div>
+
             <button onClick={listenHandler} className="episode_listenBTN">Lyssna</button>
             
         </div>

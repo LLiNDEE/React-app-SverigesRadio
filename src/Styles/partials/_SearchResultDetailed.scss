@@ -40,37 +40,42 @@
             max-width: 20vh;
             max-height: 20vh;
             border-radius: 0.5vh;
+            box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.452);
         }
         .hidden{
             display: none;
         }
         .episode:hover .episode_description{
             display: block;
-            overflow: auto;
+            overflow: visible;
             right: 0;
             bottom: 0;
-            left: 5vh;
+            left: -3vh;
+            font-size: 15px;
             position: absolute;
             padding: 2rem;
-            max-height: 100%;
-            margin-bottom: 2vh;
+            height: 20vh;
+            width: 22vh;
         }
         .episode:hover .episode_description p{
-            width: 20vh;
+            width: 22vh;
             height: 20vh;
             color: black;
-            margin-left: 3px;
             cursor: default;
+        }
+        .episode_img{
+            position: relative;
         }
         .episode:hover .episode_img img{
             display:none;
         }
         .episode:hover .episode_img{
             height: 20vh;
-            width: 20vh;
-            border: 2px solid lightgray;
+            width: 23vh;
+            border: 3px solid rgb(148, 147, 147);
             margin: auto;
             border-radius: 0.5vh;
+            box-shadow: 0px 3px 5px 1px rgba(0, 0, 0, 0.452);
         }
 
     }

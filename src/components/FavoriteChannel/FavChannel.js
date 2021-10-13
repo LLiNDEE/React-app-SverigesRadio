@@ -2,14 +2,14 @@ import React,{useContext, useState, useEffect} from 'react';
 import Context from '../Context';
 
 // Imported icons
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function FavChannel({ channel, favoriteChannels }) {
 
     const {setListenStatus, setChannelListen,setFavoriteChannels ,setViewFavChannel} = useContext(Context);
     const [favStatus, setFavStatus] = useState(false);
-    const [currList, setCurrList] = useState([]);
+    // const [currList, setCurrList] = useState([]);
 
     function ChannelListenHandler(){
         setListenStatus(true);
@@ -22,12 +22,12 @@ export default function FavChannel({ channel, favoriteChannels }) {
          console.log(favChannels);
         if(!favChannels) return;
         favChannels.forEach(item=>{
-            if(item.id == channel.id){
+            if(item.id === channel.id){
                 setFavStatus(true);
                 return;
             }
         })
-        setCurrList(favChannels);
+        // setCurrList(favChannels);
     },[])
 
     function removeFromFavoritesHandler(){
@@ -54,7 +54,7 @@ export default function FavChannel({ channel, favoriteChannels }) {
         // setFavoriteChannels(currList.filter(item=>item.id != channel.id));
         // setFavStatus(false);
         setFavoriteChannels(prev=>{
-            return prev.filter(item=>item.id != channel.id)
+            return prev.filter(item=>item.id !== channel.id)
          });
          setFavStatus(false); 
     }
@@ -84,7 +84,7 @@ export default function FavChannel({ channel, favoriteChannels }) {
     return (
             <div className="radiochannel">
                 <h3>{channel.name}</h3>
-                    <img src={channel.image}/>
+                    <img src={channel.image} alt="Kanal bild"/>
                 <button className="listenBTN" onClick={ChannelListenHandler}>Lyssna</button>
                 {(favStatus) ? <button className="likeBTN" onClick={removeFromFavoritesHandler}>Ta bort från favoriter</button> : <button className="likeBTN" onClick={addToFavoritesHandler}>Lägg till i favoriter</button>}
             </div>

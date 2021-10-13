@@ -12,8 +12,8 @@ import FavChannel from './FavChannel';
 
 export default function FavoriteChannelList(){
 
-    const {favoriteChannels, setViewFavChannel, setFavoriteChannels} = useContext(Context);
-    const [favoriteList, setFavoriteList] = useState([]);
+    const {favoriteChannels, setViewFavChannel} = useContext(Context);
+    // const [favoriteList, setFavoriteList] = useState([]);
     const [totalPages, setTotalPages] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
 
@@ -53,9 +53,13 @@ export default function FavoriteChannelList(){
         // setTestList(favoriteChannels.splice(0,10));
         
         // Render all favorite channels. No pages...
+        // let pagin = favoriteChannels.splice(0,10);
         return (favoriteChannels.map((item)=>(
             <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
         )));
+        // return (pagin.map(item=>(
+        //     <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
+        // )))
         // return (testList.map((item)=>{
         //     <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
         // }));
@@ -75,7 +79,7 @@ export default function FavoriteChannelList(){
 
     function nextPageHandler(){
         let pages = pagesVisited+channelsPerPage;
-        if(pages > favoriteList.length){
+        if(pages > favoriteChannels.length){
             console.log("RAD81")
             return;
         }
