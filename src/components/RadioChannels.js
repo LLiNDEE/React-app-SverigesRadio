@@ -27,8 +27,13 @@ export default function RadioChannels() {
 
     const[secretChannel, setSecretChannel] = useState("");
     const [rockCode, setRockCode] = useState(['r','o','c','k']);
-
     const [rockSRC, setRockSRC] = useState("https://live-bauerse-fm.sharp-stream.com/rockklassiker_instream_se_aacp?direct=true&amp;listenerid=undefined&amp;aw_0_1st.bauer_listenerid=undefined&amp;aw_0_1st.playerid=SBS_RP_WEB&amp;aw_0_1st.skey=1633703664&amp;aw_0_1st.bauer_loggedin=false&amp;aw_0_req.userConsentV2=false");
+    const rockIMG = "https://media.bauerradio.com/image/upload/c_crop,g_custom/v1592841144/brand_manager/stations/bpnhincodnqx2ovi5bdj.png";
+
+    const [nrjCode, setNRJCode] = useState(['n','r','j']);
+    const nrjSRC = "https://live-bauerse-fm.sharp-stream.com/nrj_instreamtest_se_aacp?direct=true&amp;listenerid=undefined&amp;aw_0_1st.bauer_listenerid=undefined&amp;aw_0_1st.playerid=SBS_RP_WEB&amp;aw_0_1st.skey=1634218464&amp;aw_0_1st.bauer_loggedin=false&amp;aw_0_req.userConsentV2=false";
+    const NRJ_IMG = "https://media.bauerradio.com/image/upload/q_auto/v1628587254/shows/ogtthdft4int7qe03c9t.png";
+   
 
     const [nextPage, setNextPage] = useState("");
     const [prevPage, setPrevPage] = useState("");
@@ -101,11 +106,11 @@ export default function RadioChannels() {
         console.log("KEY CODE -- > " + event.key);
 
         let tryFindKey = rockCode.find(elem=> elem === event.key);
-        if(!tryFindKey){
+        let tryNrjKey = nrjCode.find(elem=> elem === event.key);
+        if(!tryFindKey && !tryNrjKey) {
             setSecretChannel("");
             return;
         }
-
         setSecretChannel(prev=>{
             return prev+event.key
         });
@@ -113,8 +118,11 @@ export default function RadioChannels() {
 
     useEffect(()=>{
         if(secretChannel == "rock"){
-            console.log("Rock channel unlocked!!");
             setRockView("unlocked");
+            setSecretChannel("");
+        }
+        if(secretChannel == "nrj"){
+            setRockView("nrj");
             setSecretChannel("");
         }
     },[secretChannel])
@@ -124,9 +132,17 @@ export default function RadioChannels() {
         if(rockView == "unlocked"){
             return(
                 <>
-                    <ChannelListenEl audioSRC={rockSRC}/>
+                    <ChannelListenEl audioSRC={rockSRC} audioIMG={rockIMG} audioNAME="Rockklassiker"/>
                 </>
             )
+        }
+
+        if(rockView == "nrj"){
+            return(
+            <>
+                <ChannelListenEl audioSRC={nrjSRC} audioIMG={NRJ_IMG} audioNAME="NRJ"/>
+            </>
+            );
         }
 
         if(!ListenStatus && !viewFavChannel){
