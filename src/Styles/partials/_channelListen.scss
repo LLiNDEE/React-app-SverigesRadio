@@ -6,6 +6,8 @@
     'title title title'
     'img img img'
     'tagL tagL tagL'
+    'cS cS cS'
+    'nS nS nS'
     'audio audio audio';
 
     h3{
@@ -39,6 +41,20 @@
         &:hover{
             cursor: pointer;
             background-color:lightgray;
+        }
+    }
+
+    .currentSong{
+        grid-area: cS;
+        span{
+            color: rgb(6, 46, 224);
+        }
+    }
+
+    .nextSong{
+        grid-area: nS;
+        span{
+            color: rgb(49, 102, 250);
         }
     }
 
