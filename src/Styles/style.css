@@ -241,7 +241,7 @@ main {
   display: grid;
   -ms-grid-columns: 33% auto 33%;
       grid-template-columns: 33% auto 33%;
-      grid-template-areas: 'btn btn btn'  'title title title' 'img img img' 'tagL tagL tagL' 'audio audio audio';
+      grid-template-areas: 'btn btn btn'  'title title title' 'img img img' 'tagL tagL tagL' 'cS cS cS' 'nS nS nS' 'audio audio audio';
 }
 
 .channelListen_div h3 {
@@ -294,6 +294,28 @@ main {
 .channelListen_div .goBackBTN:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+.channelListen_div .currentSong {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: cS;
+}
+
+.channelListen_div .currentSong span {
+  color: #062ee0;
+}
+
+.channelListen_div .nextSong {
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: nS;
+}
+
+.channelListen_div .nextSong span {
+  color: #3166fa;
 }
 
 .audioElement_div #stopICON {
