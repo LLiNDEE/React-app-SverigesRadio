@@ -473,6 +473,35 @@ main {
   margin: auto;
 }
 
+.searchResult_btnICON_div {
+  text-align: right;
+}
+
+.searchResult_btnICON_div .icon {
+  margin: 0.2vh;
+}
+
+.searchResult_btnICON_div .icon:hover {
+  cursor: pointer;
+}
+
+.searchResult_btnICON_div .icon .viewBTN {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_btnICON_div .icon .viewBTN2 {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_btnICON_div .icon .active {
+  background-color: lightgray;
+  border-radius: 0.5vh;
+}
+
 .EpisodeListen_div {
   width: 100vh;
   margin: auto;
@@ -699,5 +728,34 @@ main {
 .searchResult_detailed .pageNum_btn:hover {
   cursor: pointer;
   background-color: rgba(139, 139, 139, 0.6);
+}
+
+.searchResult_detailed .searchResult_btnICON_div {
+  text-align: right;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon {
+  margin: 0.2vh;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon:hover {
+  cursor: pointer;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .viewBTN {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .viewBTN2 {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .active {
+  background-color: lightgray;
+  border-radius: 0.5vh;
 }
 /*# sourceMappingURL=style.css.map */
