@@ -13,16 +13,24 @@ export default function ChannelListen({audioSRC, audioIMG, audioNAME}) {
     const [nextSongTime, setNextSongTime] = useState("");
     const [prevSong, setPrevSong] = useState([]);
 
-    useEffect( async()=>{
-        let response = await fetch(`https://api.sr.se/api/v2/playlists/rightnow?channelid=${channelListen.id}&format=json`);
-        if(!response) return;
-        response = await response.json();
-        console.log(response.playlist);
-        if(!response.playlist.song) return;
-        setCurrentSong(response.playlist.song);
-        setNextSong(response.playlist.nextsong);
-        setPrevSong(response.playlist.previoussong);
+    useEffect(()=>{
+        getSongs();
     },[])
+
+    async function getSongs(){
+        try{
+            let response = await fetch(`https://api.sr.se/api/v2/playlists/rightnow?channelid=${channelListen.id}&format=json`);
+            if(!response) return;
+            response = await response.json();
+            console.log(response.playlist);
+            if(!response.playlist.song) return;
+            setCurrentSong(response.playlist.song);
+            setNextSong(response.playlist.nextsong);
+            setPrevSong(response.playlist.previoussong);
+        }catch(error){
+            console.log(error.message);
+        }
+    }
 
     useEffect(()=>{
         if(!nextSong.starttimeutc) return;
@@ -34,17 +42,30 @@ export default function ChannelListen({audioSRC, audioIMG, audioNAME}) {
     useEffect(()=>{
         if(!currentSong.starttimeutc) return;
 
-        let startTime = episode_date(currentSong.starttimeutc);
-        let endTime = getSongLength(currentSong.stoptimeutc);
-        let songStart = getSongLength(currentSong.starttimeutc);
+        let startTime = episode_date(currentSong.starttimeutc); // Tid låten börjar i 00:00 format
+        let endTime = getSongLength(currentSong.stoptimeutc); // Tiden låten slutar i Date.now() format
+        let songStart = getSongLength(currentSong.starttimeutc); // Tiden låten börjar i Date.now() format
         console.log("SONG START --> " + startTime);
 
         let songLength = endTime -songStart;
         console.log("SONG LENGTH --> " + songLength);
+        
+
+        let timeUntilNextSong = Math.abs(Date.now()-endTime);
+
         let songLenght_minutes = (songLength/1000)/60;
         console.log("SONG LENGTH in minutes --> " + songLenght_minutes);
+        refreshSongs(timeUntilNextSong);
+
+        console.log("Time until next song -->" + timeUntilNextSong);
 
     },[currentSong])
+
+    function refreshSongs(time){
+        setTimeout(()=>{
+            getSongs();
+        },time)
+    }
 
     function getSongLength(date){
         date = date.split("/").join("");
