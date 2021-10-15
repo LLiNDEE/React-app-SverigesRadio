@@ -13,89 +13,56 @@ import FavChannel from './FavChannel';
 export default function FavoriteChannelList(){
 
     const {favoriteChannels, setViewFavChannel} = useContext(Context);
-    // const [favoriteList, setFavoriteList] = useState([]);
+    
     const [totalPages, setTotalPages] = useState("");
     const [pageNumber, setPageNumber] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
-    // const [testList, setTestList] = useState([]);
-
-    const channelsPerPage = 10;
-    const pagesVisited = pageNumber * channelsPerPage;
 
     function goBackHandler(){
         setViewFavChannel(false);
     }
 
-    // useEffect(()=>{
-    //     let total_pages = Math.ceil(favoriteList.length/10);
-    //     setTotalPages(total_pages);
-    // },[])
-
-    // let maxPAGE = (pagesVisited+channelsPerPage);
-
     function renderPAGE(){
-        
-        // let total_pages = Math.ceil(favoriteList.length/10);
-        //  setTotalPages(total_pages);
-        // // let amount = favoriteList.slice(pagesVisited,maxPAGE);
-        // setFavoriteList(favoriteChannels.splice(pagesVisited,maxPAGE));
+        const channelsPerPage = 10;
+        const arr = favoriteChannels;
+        const groups = arr.map((e, i) => { 
+            return i % channelsPerPage === 0 ? arr.slice(i, i + channelsPerPage) : null; 
+        }).filter(e => { return e; });
 
-        // return (favoriteList.map((item)=>{
-        //     console.log(item);
-        //     return (
-        //         <FavChannel key={item.id} channel={item}/>
-        //     )
-        // }));
-        // console.log(favoriteChannels.splice(pagesVisited,maxPAGE));
-        // console.log(favoriteChannels);
+        console.log("CUR PAGE --> " + currentPage);
 
+        if(!groups[currentPage]){
+            setCurrentPage(prev=>{
+                return prev-1
+            });
+            return groups[currentPage-1].map((item)=>(
+                <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
+            ));
+        }
 
-        // setTestList(favoriteChannels.splice(0,10));
-        
-        // Render all favorite channels. No pages...
-        // let pagin = favoriteChannels.splice(0,10);
-        return (favoriteChannels.map((item)=>(
+        return groups[currentPage].map((item)=>(
             <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
-        )));
-        // return (pagin.map(item=>(
-        //     <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
-        // )))
-        // return (testList.map((item)=>{
-        //     <FavChannel favoriteChannels={favoriteChannels} key={item.id} channel={item}/>
-        // }));
+        ));
     }
 
-    // function renderCurrentPage(page){
-    //     // console.log("RAD 53")
-    //     // favoriteList.map(item=>{
-    //     //     if(item.page == page){
-    //     //         console.log(`CHANNEL ON PAGE ${page} --> ` + item);
-    //     //         return(
-    //     //             <RadioChannel key={item.channel.id} channel={item.channel}/>
-    //     //         )
-    //     //     }
-    //     // })
-    // }
-
     function nextPageHandler(){
-        let pages = pagesVisited+channelsPerPage;
-        if(pages > favoriteChannels.length){
-            console.log("RAD81")
+
+        if((currentPage+1) >= Math.ceil(favoriteChannels.length/10)){
             return;
         }
 
-        setPageNumber(prev=>{
+        setCurrentPage(prev=>{
             return prev+1
         });
+
     }
 
     function prevPageHandler(){
-        let pages = pagesVisited-channelsPerPage;
-        if(pages < 0){
+        if((currentPage-1) < 0){
             return;
         }
-        console.log(pages);
-        setPageNumber(prev=>{
+        setCurrentPage(prev=>{
             return prev-1
         });
     }
@@ -113,7 +80,7 @@ export default function FavoriteChannelList(){
         
          <div className="pageDisplay_div">
                      <ArrowForwardIosIcon onClick={nextPageHandler} className="arrow_icon_right"/>
-                     <p className="currentPageText">Sida {pageNumber+1} av {totalPages} </p>
+                     <p className="currentPageText">Sida {currentPage+1} av {Math.ceil(favoriteChannels.length/10)} </p>
                      <ArrowBackIosIcon onClick={prevPageHandler} className="arrow_icon_left"/>
                  </div>
          <div className="RadioChannels_container">
