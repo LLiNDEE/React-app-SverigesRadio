@@ -19,7 +19,6 @@ export default function FavChannel({ channel, favoriteChannels }) {
     let favChannels;
     useEffect(()=>{
          favChannels = JSON.parse(localStorage.getItem('favoriteChannels'));
-         console.log(favChannels);
         if(!favChannels) return;
         favChannels.forEach(item=>{
             if(item.id === channel.id){

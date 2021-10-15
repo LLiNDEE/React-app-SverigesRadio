@@ -92,10 +92,6 @@
 }
 
 .searchResult_btnICON_div{
-    // display:grid;
-    // grid-template-columns: auto;
-    // grid-template-areas: 
-    // 'i i2';
     text-align: right;
     .icon{
         margin: 0.2vh;
@@ -106,7 +102,6 @@
             color: black;
             transition: background-color 0.4s ease;
         }
-
         .viewBTN2{
             color: black;
             transition: background-color 0.4s ease;
@@ -116,5 +111,4 @@
             border-radius: 0.5vh;
         }
     }
-
 }
