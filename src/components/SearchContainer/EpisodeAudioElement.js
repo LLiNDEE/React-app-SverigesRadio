@@ -2,6 +2,7 @@ import React,{useRef, useState, useEffect} from 'react'
 
 import { FaStop, FaPlay } from "react-icons/fa";
 
+// Element för sliders (Volymslider och Progressbar)
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Slider from '@mui/material/Slider';
@@ -9,6 +10,10 @@ import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
 import { CircleOutlined } from '@mui/icons-material';
+
+//Imported icons
+import Replay30Icon from '@mui/icons-material/Replay30'; // 30 sec tillbaka ikon
+import Forward30Icon from '@mui/icons-material/Forward30'; // 30 sec framåt ikon
 
 
 export default function AudioElement({ duration ,audioSRC }) {
@@ -179,6 +184,27 @@ export default function AudioElement({ duration ,audioSRC }) {
         return () => clearInterval(interval);
     },[position])
 
+    function replayHandler(){
+        let replayAmount = 30;
+        if((position-replayAmount) < 0){
+            setPosition(0);
+            return;
+        }
+        setPosition(prev=>{
+            return prev-replayAmount;
+        });
+    }
+
+    function forwardHandler(){
+        let forwardAmount = 30;
+        if((position+forwardAmount) > duration){
+            setPosition(duration);
+            return;
+        }
+        setPosition(prev=>{
+            return prev+forwardAmount;
+        });
+    }
 
     return (
         <div className="audioElement_div">
@@ -208,9 +234,11 @@ export default function AudioElement({ duration ,audioSRC }) {
                 />
                 <p className="totalTime">{totalTime}</p>
             </div>
-            
-            
-            {toggleBtnHandler()}
+            <div className="progressbar-menu-icon">
+                <Replay30Icon onClick={replayHandler} className="Icon" sx={{ fontSize: 32}}/>
+                {toggleBtnHandler()}
+                <Forward30Icon onClick={forwardHandler} className="Icon" sx={{ fontSize: 32 }}/>
+            </div>
         </div>
     )
 }

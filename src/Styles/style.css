@@ -794,5 +794,15 @@ main {
   -ms-grid-column: 2;
   grid-area: pB;
   width: 30vh;
+  color: blue;
+}
+
+.audioElement_div .progressbar-menu-icon {
+  color: #4d4c4c;
+}
+
+.audioElement_div .progressbar-menu-icon .Icon:hover {
+  cursor: pointer;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */

@@ -20,6 +20,17 @@
         .pB-slider{
             grid-area: pB;
             width: 30vh;
+            color: blue;
+        }
+    }
+
+    .progressbar-menu-icon{
+        color: rgb(77, 76, 76);
+        .Icon{
+            &:hover{
+                cursor: pointer;
+                color: black;
+            }
         }
     }
 
