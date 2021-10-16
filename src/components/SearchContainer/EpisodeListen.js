@@ -10,7 +10,7 @@ export default function EpisodeListen() {
     
     useEffect(()=>{
         console.log(EpisodeListen);
-    },[])
+    },[EpisodeListen])
 
     function goBackHandler(){
         setListeningStatus(false);
@@ -25,6 +25,7 @@ export default function EpisodeListen() {
             <div className="audioEl">
                 {/* <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> */}
                 {(EpisodeListen.listenpodfile) ? <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> : "Finns ingen ljudfil...."}
+                {/* <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> */}
             </div>
     </div>
     )

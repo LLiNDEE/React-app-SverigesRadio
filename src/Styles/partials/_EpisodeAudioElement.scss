@@ -1,0 +1,38 @@
+.audioElement_div{
+    text-align: center;
+    margin: auto;
+    .audio-progressbar{
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-areas:
+        'cT pB tT';
+        margin: auto;
+        text-align:center;
+        .currentTime{
+            margin-right: 1.5vh;
+            grid-area: cT;
+        }
+        .totalTime{
+            grid-area: tT;
+            margin-left: 0.5vh;
+        }
+        .pB-slider{
+            grid-area: pB;
+            width: 30vh;
+            color: blue;
+        }
+    }
+
+    .progressbar-menu-icon{
+        color: rgb(77, 76, 76);
+        .Icon{
+            &:hover{
+                cursor: pointer;
+                color: black;
+            }
+        }
+    }
+
+}
+

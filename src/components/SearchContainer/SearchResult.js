@@ -6,6 +6,9 @@ import EpisodeContext from '../EpisodeContext';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+
 // Imported components
 import Episode from './Episode';
 import SearchResultDetailed from './SearchResultDetailed';
@@ -13,21 +16,38 @@ import SearchResultDetailed from './SearchResultDetailed';
 export default function SearchResult(){
     const {searchTerm, episodes, totalHits, totalPages, currentPage, prevPageHandler, nextPageHandler} = useContext(EpisodeContext);
 
-    const [view, setView] = useState("");
+    const [view, setView] = useState("list");
+
+    // function viewDetailedListHandler(){
+    //     setView("detailed");
+    // }
+
+    function viewListHandler(){
+        setView("list");
+    }
 
     function viewDetailedListHandler(){
         setView("detailed");
     }
 
     function render(){
-        if(view == ""){
+        if(view == "list"){
             return(
                 <>
                 <p>Sök resultat för "{searchTerm}"</p>
                 <div className="searchResult_totalHits_div">
                     {(totalHits) ? <p>{totalHits} träffar</p> : ""}
                 </div>
+
+
                 <div className="searchResult_container">
+                <div className="searchResult_btnICON_div">
+                    <div className="icon">
+                        <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view == 'list') ? "viewBTN active" : "viewBTN" } />
+                        <ViewModuleIcon sx={{ fontSize: 32 }} onClick={viewDetailedListHandler} className={(view == 'list-detailed')?"viewBTN2 active" : "viewBTN2"}/>
+                    </div>
+                    
+                </div>
                     <div className="searchResult_pagesBTN">
                         <ArrowBackIosIcon onClick={prevPageHandler} className="arrow_icon_left"/>
                         <p>Sida {currentPage} av {totalPages}</p>
@@ -37,7 +57,7 @@ export default function SearchResult(){
                     {episodes.map(episode=>(
                         <Episode key={episode.id} episode={episode}/>
                     ))}
-                    <p className="searchResult_showDetailed_btn" onClick={viewDetailedListHandler}>Visa detaljerad lista</p>
+                    {/* <p className="searchResult_showDetailed_btn" onClick={viewDetailedListHandler}>Visa detaljerad lista</p> */}
                 </div>
                 </>
             )
@@ -45,7 +65,7 @@ export default function SearchResult(){
 
         if(view == 'detailed'){
             return(
-                <SearchResultDetailed setView={setView}/>
+                <SearchResultDetailed view={view} setView={setView}/>
             )
         }
     }

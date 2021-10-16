@@ -241,7 +241,7 @@ main {
   display: grid;
   -ms-grid-columns: 33% auto 33%;
       grid-template-columns: 33% auto 33%;
-      grid-template-areas: 'btn btn btn'  'title title title' 'img img img' 'tagL tagL tagL' 'audio audio audio';
+      grid-template-areas: 'btn btn btn'  'title title title' 'img img img' 'tagL tagL tagL' 'cS cS cS' 'nS nS nS' 'audio audio audio';
 }
 
 .channelListen_div h3 {
@@ -294,6 +294,28 @@ main {
 .channelListen_div .goBackBTN:hover {
   cursor: pointer;
   background-color: lightgray;
+}
+
+.channelListen_div .currentSong {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: cS;
+}
+
+.channelListen_div .currentSong span {
+  color: #062ee0;
+}
+
+.channelListen_div .nextSong {
+  -ms-grid-row: 6;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: nS;
+}
+
+.channelListen_div .nextSong span {
+  color: #3166fa;
 }
 
 .audioElement_div #stopICON {
@@ -449,6 +471,35 @@ main {
   text-align: right;
   width: 50vh;
   margin: auto;
+}
+
+.searchResult_btnICON_div {
+  text-align: right;
+}
+
+.searchResult_btnICON_div .icon {
+  margin: 0.2vh;
+}
+
+.searchResult_btnICON_div .icon:hover {
+  cursor: pointer;
+}
+
+.searchResult_btnICON_div .icon .viewBTN {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_btnICON_div .icon .viewBTN2 {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_btnICON_div .icon .active {
+  background-color: lightgray;
+  border-radius: 0.5vh;
 }
 
 .EpisodeListen_div {
@@ -677,5 +728,81 @@ main {
 .searchResult_detailed .pageNum_btn:hover {
   cursor: pointer;
   background-color: rgba(139, 139, 139, 0.6);
+}
+
+.searchResult_detailed .searchResult_btnICON_div {
+  text-align: right;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon {
+  margin: 0.2vh;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon:hover {
+  cursor: pointer;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .viewBTN {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .viewBTN2 {
+  color: black;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+
+.searchResult_detailed .searchResult_btnICON_div .icon .active {
+  background-color: lightgray;
+  border-radius: 0.5vh;
+}
+
+.audioElement_div {
+  text-align: center;
+  margin: auto;
+}
+
+.audioElement_div .audio-progressbar {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
+      grid-template-areas: 'cT pB tT';
+  margin: auto;
+  text-align: center;
+}
+
+.audioElement_div .audio-progressbar .currentTime {
+  margin-right: 1.5vh;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cT;
+}
+
+.audioElement_div .audio-progressbar .totalTime {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: tT;
+  margin-left: 0.5vh;
+}
+
+.audioElement_div .audio-progressbar .pB-slider {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: pB;
+  width: 30vh;
+  color: blue;
+}
+
+.audioElement_div .progressbar-menu-icon {
+  color: #4d4c4c;
+}
+
+.audioElement_div .progressbar-menu-icon .Icon:hover {
+  cursor: pointer;
+  color: black;
 }
 /*# sourceMappingURL=style.css.map */

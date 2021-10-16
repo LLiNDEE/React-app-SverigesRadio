@@ -50,7 +50,12 @@
         .hidden{
             display: none;
         }
+
+
+
     }
+
+
 
     .searchResult_pagesBTN{
         display: flex;
@@ -84,4 +89,26 @@
     text-align: right;
     width: 50vh;
     margin: auto;
+}
+
+.searchResult_btnICON_div{
+    text-align: right;
+    .icon{
+        margin: 0.2vh;
+        &:hover{
+            cursor: pointer;
+        }
+        .viewBTN{
+            color: black;
+            transition: background-color 0.4s ease;
+        }
+        .viewBTN2{
+            color: black;
+            transition: background-color 0.4s ease;
+        }
+        .active{
+            background-color:lightgray;
+            border-radius: 0.5vh;
+        }
+    }
 }
