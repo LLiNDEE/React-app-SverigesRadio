@@ -8,6 +8,7 @@ import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { CircleOutlined } from '@mui/icons-material';
 
 
 export default function AudioElement({ duration ,audioSRC }) {
@@ -18,23 +19,44 @@ export default function AudioElement({ duration ,audioSRC }) {
     const [muted, setMuted] = useState(false);
     const [prevVolume, setPrevVolume] = useState(0);
 
-    // const [position, setPosition] = useState(30);
+    const [position, setPosition] = useState(0);
     const [totalTime, setTotalTime] = useState("");
+    const [prevPos, setPrevpos] = useState("");
     // const [duration, setDuration] = useState(200);
 
-    let SliderDuration;
+    const [timePlayed, setTimePlayed] = useState("");
+    const [isPlaying, setIsPlaying ] = useState(true);
+
+    let SliderDuration = duration;
 
     const audioEl = useRef();
 
     useEffect(()=>{
-        let seconds = String(duration%60);
-        let minutes = String(duration/60);
-        minutes = minutes.split(".");
-        seconds = seconds.split(".");
-        let totalTime = `${minutes[0]}:${seconds}`
+        setPosition(0);
+        audioEl.current.load();
+        audioEl.current.currentTime = position;
+        playHandler();
+    },[audioSRC])
+
+    useEffect(()=>{
+        // let seconds = String(duration%60);
+        // let minutes = String(duration/60);
+        // minutes = minutes.split(".");
+        // seconds = seconds.split(".");
+        // let totalTime = `${minutes[0]}:${seconds}`
+        // setTotalTime(totalTime);
+        let seconds = Math.floor(duration%60);
+        let minutes = Math.floor(duration/60);
+        if(seconds < 10){
+            seconds = `0${seconds}`;
+        }
+        if(minutes < 10){
+            minutes = `0${minutes}`;
+        }
+        let totalTime = `${minutes}:${seconds}`;
         setTotalTime(totalTime);
         // SliderDuration = totalTime;
-    },[]);
+    },[duration]);
 
     useEffect(()=>{
         audioEl.current.volume = value/100;
@@ -58,11 +80,26 @@ export default function AudioElement({ duration ,audioSRC }) {
 
     function pauseHandler(){
         setPauseStatus(true);
+        setIsPlaying(false);
+        setPrevpos(position);
         audioEl.current.pause();
     }
 
     function playHandler(){
+        if(position == duration){
+            audioEl.current.currentTime = 0;
+            setPauseStatus(false);
+            setIsPlaying(true);
+            setPosition(0);
+            audioEl.current.play();
+            return;
+        }
+
         setPauseStatus(false);
+        setIsPlaying(true);
+        setPosition(prev=>{
+            return prev+1
+        });
         audioEl.current.play();
     }
 
@@ -105,6 +142,42 @@ export default function AudioElement({ duration ,audioSRC }) {
         }
     }
 
+    useEffect(()=>{
+        let seconds = Math.floor(position%60);
+        let minutes = Math.floor(position/60);
+        if(minutes <10){
+            minutes = `0${minutes}`;
+        }
+        if(seconds <10){
+            seconds = `0${seconds}`;
+        }
+        let time_string = `${minutes}:${seconds}`;
+        
+        let currentTime = audioEl.current.currentTime;
+        if(currentTime == duration){
+            return;
+        }
+        setTimePlayed(time_string);
+        setAudioTime();
+    },[position])
+
+    function setAudioTime(){
+        audioEl.current.currentTime = position;
+    }
+
+    useEffect(()=>{
+        if(position == duration) {
+            pauseHandler();
+            return;
+        }
+        const interval = setInterval(()=>{
+            if(!isPlaying) return;
+            setPosition(prev=>{
+                return prev+1;
+            });
+        },1000);
+        return () => clearInterval(interval);
+    },[position])
 
 
     return (
@@ -112,28 +185,31 @@ export default function AudioElement({ duration ,audioSRC }) {
             <audio autoPlay ref={audioEl}>
                 <source src={audioSRC}></source>
             </audio>
-            <Box sx={{ width: 200 }}>
-                <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                    {(volumeOFF) ? <VolumeOffIcon onClick={turnVolumeONhandler} className="volume-off-btn"/> : <VolumeDown onClick={turnVolumeOffHandler} className="volume-down-btn"/>}
-                    <Slider aria-label="Volume" value={value} onChange={handleChange} />
-                    <VolumeUp />
-                </Stack>
-            </Box>
-            {/* <p>{totalTime}</p> */}
-            {/* <Slider
-                aria-label="time-indicator"
-                color="secondary"
-                value={position}
-                min={0}
-                max={SliderDuration}
-                step={0.1}
-                onChange={(_,value)=> setPosition(value)}
-            /> */}
-            {/* <p>Total time {totalTime}</p>
-            <p>CURRENT TIME {position}</p>
-            <audio controls> 
-                <source src={audioSRC}></source>
-            </audio> */}
+            <div className="volume-slider-div">
+                <Box sx={{ width: 400 }}>
+                    <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                        {(volumeOFF) ? <VolumeOffIcon onClick={turnVolumeONhandler} className="volume-off-btn"/> : <VolumeDown onClick={turnVolumeOffHandler} className="volume-down-btn"/>}
+                        <Slider aria-label="Volume" value={value} onChange={handleChange} />
+                        <VolumeUp />
+                    </Stack>
+                </Box>
+            </div>
+            <div className="audio-progressbar">
+            <p className="currentTime">{timePlayed}</p>
+                <Slider
+                    aria-label="time-indicator"
+                    color="secondary"
+                    value={position}
+                    min={0}
+                    max={SliderDuration}
+                    step={1}
+                    onChange={(_,value)=> setPosition(value)}
+                    className="pB-slider"
+                />
+                <p className="totalTime">{totalTime}</p>
+            </div>
+            
+            
             {toggleBtnHandler()}
         </div>
     )
