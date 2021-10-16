@@ -758,4 +758,36 @@ main {
   background-color: lightgray;
   border-radius: 0.5vh;
 }
+
+.audioElement_div {
+  text-align: center;
+}
+
+.audioElement_div .audio-progressbar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 33% auto 33%;
+      grid-template-columns: 33% auto 33%;
+      grid-template-areas: 'cT pB tT';
+  text-align: center;
+}
+
+.audioElement_div .audio-progressbar .currentTime {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: cT;
+}
+
+.audioElement_div .audio-progressbar .totalTime {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: tT;
+}
+
+.audioElement_div .audio-progressbar .pB-slider {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: pB;
+  width: 30vh;
+}
 /*# sourceMappingURL=style.css.map */

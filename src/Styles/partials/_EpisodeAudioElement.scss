@@ -1,0 +1,20 @@
+.audioElement_div{
+    text-align: center;
+    .audio-progressbar{
+        display: grid;
+        grid-template-columns: 33% auto 33%;
+        grid-template-areas:
+        'cT pB tT';
+        text-align:center;
+        .currentTime{
+            grid-area: cT;
+        }
+        .totalTime{
+            grid-area: tT;
+        }
+        .pB-slider{
+            grid-area: pB;
+            width: 30vh;
+        }
+    }
+}
