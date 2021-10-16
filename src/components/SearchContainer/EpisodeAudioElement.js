@@ -8,6 +8,7 @@ import Slider from '@mui/material/Slider';
 import VolumeDown from '@mui/icons-material/VolumeDown';
 import VolumeUp from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import { CircleOutlined } from '@mui/icons-material';
 
 
 export default function AudioElement({ duration ,audioSRC }) {
@@ -20,6 +21,7 @@ export default function AudioElement({ duration ,audioSRC }) {
 
     const [position, setPosition] = useState(0);
     const [totalTime, setTotalTime] = useState("");
+    const [prevPos, setPrevpos] = useState("");
     // const [duration, setDuration] = useState(200);
 
     const [timePlayed, setTimePlayed] = useState("");
@@ -33,14 +35,25 @@ export default function AudioElement({ duration ,audioSRC }) {
         setPosition(0);
         audioEl.current.load();
         audioEl.current.currentTime = position;
+        playHandler();
     },[audioSRC])
 
     useEffect(()=>{
-        let seconds = String(duration%60);
-        let minutes = String(duration/60);
-        minutes = minutes.split(".");
-        seconds = seconds.split(".");
-        let totalTime = `${minutes[0]}:${seconds}`
+        // let seconds = String(duration%60);
+        // let minutes = String(duration/60);
+        // minutes = minutes.split(".");
+        // seconds = seconds.split(".");
+        // let totalTime = `${minutes[0]}:${seconds}`
+        // setTotalTime(totalTime);
+        let seconds = Math.floor(duration%60);
+        let minutes = Math.floor(duration/60);
+        if(seconds < 10){
+            seconds = `0${seconds}`;
+        }
+        if(minutes < 10){
+            minutes = `0${minutes}`;
+        }
+        let totalTime = `${minutes}:${seconds}`;
         setTotalTime(totalTime);
         // SliderDuration = totalTime;
     },[duration]);
@@ -68,12 +81,25 @@ export default function AudioElement({ duration ,audioSRC }) {
     function pauseHandler(){
         setPauseStatus(true);
         setIsPlaying(false);
+        setPrevpos(position);
         audioEl.current.pause();
     }
 
     function playHandler(){
+        if(position == duration){
+            audioEl.current.currentTime = 0;
+            setPauseStatus(false);
+            setIsPlaying(true);
+            setPosition(0);
+            audioEl.current.play();
+            return;
+        }
+
         setPauseStatus(false);
         setIsPlaying(true);
+        setPosition(prev=>{
+            return prev+1
+        });
         audioEl.current.play();
     }
 
@@ -140,6 +166,10 @@ export default function AudioElement({ duration ,audioSRC }) {
     }
 
     useEffect(()=>{
+        if(position == duration) {
+            pauseHandler();
+            return;
+        }
         const interval = setInterval(()=>{
             if(!isPlaying) return;
             setPosition(prev=>{
@@ -147,7 +177,7 @@ export default function AudioElement({ duration ,audioSRC }) {
             });
         },1000);
         return () => clearInterval(interval);
-    },[isPlaying])
+    },[position])
 
 
     return (
@@ -155,13 +185,15 @@ export default function AudioElement({ duration ,audioSRC }) {
             <audio autoPlay ref={audioEl}>
                 <source src={audioSRC}></source>
             </audio>
-            <Box sx={{ width: 200 }}>
-                <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                    {(volumeOFF) ? <VolumeOffIcon onClick={turnVolumeONhandler} className="volume-off-btn"/> : <VolumeDown onClick={turnVolumeOffHandler} className="volume-down-btn"/>}
-                    <Slider aria-label="Volume" value={value} onChange={handleChange} />
-                    <VolumeUp />
-                </Stack>
-            </Box>
+            <div className="volume-slider-div">
+                <Box sx={{ width: 400 }}>
+                    <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                        {(volumeOFF) ? <VolumeOffIcon onClick={turnVolumeONhandler} className="volume-off-btn"/> : <VolumeDown onClick={turnVolumeOffHandler} className="volume-down-btn"/>}
+                        <Slider aria-label="Volume" value={value} onChange={handleChange} />
+                        <VolumeUp />
+                    </Stack>
+                </Box>
+            </div>
             <div className="audio-progressbar">
             <p className="currentTime">{timePlayed}</p>
                 <Slider

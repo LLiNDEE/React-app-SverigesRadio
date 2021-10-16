@@ -761,18 +761,22 @@ main {
 
 .audioElement_div {
   text-align: center;
+  margin: auto;
 }
 
 .audioElement_div .audio-progressbar {
+  width: 100%;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 33% auto 33%;
-      grid-template-columns: 33% auto 33%;
+  -ms-grid-columns: auto;
+      grid-template-columns: auto;
       grid-template-areas: 'cT pB tT';
+  margin: auto;
   text-align: center;
 }
 
 .audioElement_div .audio-progressbar .currentTime {
+  margin-right: 1.5vh;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: cT;
@@ -782,6 +786,7 @@ main {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
   grid-area: tT;
+  margin-left: 0.5vh;
 }
 
 .audioElement_div .audio-progressbar .pB-slider {
