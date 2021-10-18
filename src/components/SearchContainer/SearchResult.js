@@ -31,7 +31,7 @@ export default function SearchResult(){
     }
 
     function render(){
-        if(view == "list"){
+        if(view === "list"){
             return(
                 <>
                 <p>Sök resultat för "{searchTerm}"</p>
@@ -43,8 +43,8 @@ export default function SearchResult(){
                 <div className="searchResult_container">
                 <div className="searchResult_btnICON_div">
                     <div className="icon">
-                        <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view == 'list') ? "viewBTN active" : "viewBTN" } />
-                        <ViewModuleIcon sx={{ fontSize: 32 }} onClick={viewDetailedListHandler} className={(view == 'list-detailed')?"viewBTN2 active" : "viewBTN2"}/>
+                        <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view === 'list') ? "viewBTN active" : "viewBTN" } />
+                        <ViewModuleIcon sx={{ fontSize: 32 }} onClick={viewDetailedListHandler} className={(view === 'list-detailed')?"viewBTN2 active" : "viewBTN2"}/>
                     </div>
                     
                 </div>
@@ -63,7 +63,7 @@ export default function SearchResult(){
             )
         }
 
-        if(view == 'detailed'){
+        if(view === 'detailed'){
             return(
                 <SearchResultDetailed view={view} setView={setView}/>
             )

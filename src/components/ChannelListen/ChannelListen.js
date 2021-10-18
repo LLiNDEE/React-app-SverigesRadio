@@ -33,6 +33,7 @@ export default function ChannelListen({audioSRC, audioIMG, audioNAME}) {
     }
 
     useEffect(()=>{
+        if(!nextSong) return;
         if(!nextSong.starttimeutc) return;
         let time = episode_date(nextSong.starttimeutc);
         console.log(time);
@@ -122,8 +123,8 @@ export default function ChannelListen({audioSRC, audioIMG, audioNAME}) {
             <h3>Lyssnar på {(audioNAME) ? audioNAME : channelListen.name}</h3>
             <img src={(audioIMG) ? audioIMG :channelListen.image} alt="Kanal bild"/>
             <p >{channelListen.tagline}</p>
-            {(currentSong.length !== 0) ? <p className="currentSong"><span>Just nu:</span> {currentSong.title} av {currentSong.artist}</p> : ""}
-            {(nextSong.length !== 0) ? <p className="nextSong"><span>Nästa låt:</span> {nextSong.title} av {nextSong.artist} ({nextSongTime})</p> : ""}
+            {(currentSong && currentSong.length !== 0) ? <p className="currentSong"><span>Just nu:</span> {currentSong.title} av {currentSong.artist}</p> : ""}
+            {(nextSong && nextSong.length !== 0) ? <p className="nextSong"><span>Nästa låt:</span> {nextSong.title} av {nextSong.artist} ({nextSongTime})</p> : ""}
             <div className="audioEl">
                 <AudioEl audioSRC={(audioSRC) ? audioSRC : channelListen.liveaudio.url}/>
             </div>
