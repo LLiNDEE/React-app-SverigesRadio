@@ -634,9 +634,8 @@ main {
   display: block;
   overflow: visible;
   right: 0;
-  bottom: 0;
+  bottom: 2vh;
   left: -3vh;
-  font-size: 15px;
   position: absolute;
   padding: 2rem;
   height: 20vh;
@@ -644,7 +643,7 @@ main {
 }
 
 .searchResult_detailed .episode_container .episode:hover .episode_description p {
-  width: 22vh;
+  width: 19vh;
   height: 20vh;
   color: black;
   cursor: default;

@@ -63,6 +63,7 @@ export default function ChannelListen({audioSRC, audioIMG, audioNAME}) {
     },[currentSong])
 
     function refreshSongs(time){
+        if(!time) return;
         setTimeout(()=>{
             getSongs();
         },time)
