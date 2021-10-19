@@ -25,10 +25,6 @@ export default function SearchResultDetailed({ setView, view }){
         setPageNum("");
     }
 
-    function goBackHandler(){
-        setView("");
-    }
-
     function viewListHandler(){
         setView("list");
     }
@@ -48,8 +44,8 @@ export default function SearchResultDetailed({ setView, view }){
         </form>
         <div className="searchResult_btnICON_div">
             <div className="icon">
-                <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view == 'list') ? "viewBTN active" : "viewBTN" } />
-                <ViewModuleIcon sx={{ fontSize: 32 }} onClick={viewDetailedListHandler} className={(view == 'detailed')? "viewBTN2 active" : "viewBTN2"}/>
+                <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view === 'list') ? "viewBTN active" : "viewBTN" } />
+                <ViewModuleIcon sx={{ fontSize: 32 }} onClick={viewDetailedListHandler} className={(view === 'detailed')? "viewBTN2 active" : "viewBTN2"}/>
             </div>  
         </div>
         <div className="searchResult_pagesBTN">

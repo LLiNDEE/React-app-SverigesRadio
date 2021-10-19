@@ -1,5 +1,7 @@
 import React,{useContext, useEffect} from 'react';
 
+import Alert from '@mui/material/Alert';
+
 import EpisodeContext from '../EpisodeContext';
 
 import AudioEl from './EpisodeAudioElement';
@@ -24,7 +26,7 @@ export default function EpisodeListen() {
             <p className="description">{EpisodeListen.description}</p>
             <div className="audioEl">
                 {/* <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> */}
-                {(EpisodeListen.listenpodfile) ? <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> : "Finns ingen ljudfil...."}
+                {(EpisodeListen.listenpodfile) ? <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> : <Alert variant="filled" severity="warning">Avsnittet har ingen ljudfil...</Alert>}
                 {/* <AudioEl duration={EpisodeListen.listenpodfile.duration} audioSRC={EpisodeListen.listenpodfile.url}/> */}
             </div>
     </div>
