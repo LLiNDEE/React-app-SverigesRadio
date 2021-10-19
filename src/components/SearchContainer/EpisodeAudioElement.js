@@ -178,9 +178,9 @@ export default function AudioElement({ duration ,audioSRC }) {
         const interval = setInterval(()=>{
             if(!isPlaying) return;
             setPosition(prev=>{
-                return prev+1;
+                return prev+0.5;
             });
-        },1000);
+        }, 500);
         return () => clearInterval(interval);
     },[position])
 
@@ -228,7 +228,7 @@ export default function AudioElement({ duration ,audioSRC }) {
                     value={position}
                     min={0}
                     max={SliderDuration}
-                    step={1}
+                    step={0.5}
                     onChange={(_,value)=> setPosition(value)}
                     className="pB-slider"
                 />
