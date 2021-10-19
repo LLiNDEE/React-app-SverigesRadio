@@ -48,9 +48,7 @@ export default function EpisodeDetailed({ episode }) {
                 <h4 className="episode_title">{episode.title}</h4>
                 <p className="publish_date">Publicerad: {episode_date()}</p> 
             </div>
-
             <button onClick={listenHandler} className="episode_listenBTN">Lyssna</button>
-            
         </div>
     )
 }
