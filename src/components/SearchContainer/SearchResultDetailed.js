@@ -37,11 +37,7 @@ export default function SearchResultDetailed({ setView, view }){
     return(
         <div className="searchResult_detailed">
         <p>Sök resultat för {searchTerm}</p>
-        <form onSubmit={submitHandler}>
-            <input className="pageNum_input" type="number" placeholder="Sidnr" onChange={e=>setPageNum(e.target.value)} value={pageNum} />
-            <input className="pageNum_btn" type="submit" value="Gå"/>
-
-        </form>
+        <p className="searchResultDetailed_showNormalList">{totalHits} träffar</p>
         <div className="searchResult_btnICON_div">
             <div className="icon">
                 <ViewListIcon sx={{ fontSize: 32 }} onClick={viewListHandler} className={(view === 'list') ? "viewBTN active" : "viewBTN" } />
@@ -53,7 +49,11 @@ export default function SearchResultDetailed({ setView, view }){
             <p>Sida {currentPage} av {totalPages}</p>
             <ArrowForwardIosIcon onClick={nextPageHandler} className="arrow_icon_right"/>
         </div>
-        <p className="searchResultDetailed_showNormalList">{totalHits} träffar</p>
+        <form onSubmit={submitHandler}>
+            <input className="pageNum_input" type="number" placeholder="Sidnr" onChange={e=>setPageNum(e.target.value)} value={pageNum} />
+            <input className="pageNum_btn" type="submit" value="Gå"/>
+        </form>
+        
         <div className="episode_container">
         {episodes.map(episode=>(
                         <EpisodeDetailed key={episode.id} episode={episode}/>

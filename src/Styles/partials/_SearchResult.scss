@@ -17,6 +17,7 @@
         border-collapse: collapse;
         &:hover{
             background-color: rgba(211, 211, 211, 0.479);
+            cursor: default;
         }
         img{
             flex: 1;
