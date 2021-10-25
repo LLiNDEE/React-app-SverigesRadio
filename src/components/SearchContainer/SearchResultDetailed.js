@@ -45,9 +45,9 @@ export default function SearchResultDetailed({ setView, view }){
             </div>  
         </div>
         <div className="searchResult_pagesBTN">
-            <ArrowBackIosIcon onClick={prevPageHandler} className="arrow_icon_left"/>
+            <ArrowBackIosIcon onClick={prevPageHandler} className={(currentPage == 1) ? "arrow_icon_left btn_disabled" : "arrow_icon_left"}/>
             <p>Sida {currentPage} av {totalPages}</p>
-            <ArrowForwardIosIcon onClick={nextPageHandler} className="arrow_icon_right"/>
+            <ArrowForwardIosIcon onClick={nextPageHandler} className={(currentPage == totalPages) ? "arrow_icon_right btn_disabled" : "arrow_icon_right"}/>
         </div>
         <form onSubmit={submitHandler}>
             <input className="pageNum_input" type="number" placeholder="Sidnr" onChange={e=>setPageNum(e.target.value)} value={pageNum} />

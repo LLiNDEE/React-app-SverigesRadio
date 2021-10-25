@@ -93,10 +93,18 @@
                 cursor: pointer;
             }
         }
+
         .arrow_icon_right{
             flex: 1;
             &:hover{
                 cursor: pointer;
+            }
+        }
+        .btn_disabled{
+            cursor: not-allowed;
+            color: lightgray;
+            &:hover{
+                cursor: not-allowed;
             }
         }
         p{

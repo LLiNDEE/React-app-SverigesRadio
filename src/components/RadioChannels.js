@@ -155,9 +155,9 @@ export default function RadioChannels() {
                     </div>
                 </div>
                 <div className="pageDisplay_div">
-                    <ArrowForwardIosIcon onClick={nextPageHandler} className="arrow_icon_right"/>
+                    <ArrowForwardIosIcon onClick={nextPageHandler} className={(currPage == totalPages) ? "arrow_icon_right btn_disabled" : "arrow_icon_right"}/>
                     <p className="currentPageText">Sida {currPage} av {totalPages} </p>
-                    <ArrowBackIosIcon onClick={prevPageHandler} className="arrow_icon_left"/>
+                    <ArrowBackIosIcon onClick={prevPageHandler} className={(currPage == 1) ? "arrow_icon_left btn_disabled" : "arrow_icon_left"}/>
                 </div>
                 <div className="RadioChannels_container">
                     {(RadioChannels.map(rc=>(

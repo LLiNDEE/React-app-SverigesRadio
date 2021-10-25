@@ -73,6 +73,13 @@
                 cursor: pointer;
             }
         }
+        .btn_disabled{
+            cursor: not-allowed;
+            color: lightgray;
+            &:hover{
+                cursor: not-allowed;
+            }
+        }
         p{
             flex: 1;
         }

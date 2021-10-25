@@ -49,7 +49,7 @@ export default function SearchResult(){
                     
                 </div>
                     <div className="searchResult_pagesBTN">
-                        <ArrowBackIosIcon onClick={prevPageHandler} className="arrow_icon_left"/>
+                        <ArrowBackIosIcon onClick={prevPageHandler} className={(currentPage == 1) ? "arrow_icon_left btn_disabled" : "arrow_icon_left"}/>
                         <p>Sida {currentPage} av {totalPages}</p>
                         <ArrowForwardIosIcon onClick={nextPageHandler} className="arrow_icon_right"/>
                     </div>

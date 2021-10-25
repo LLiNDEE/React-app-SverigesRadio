@@ -83,6 +83,16 @@ main {
   border-radius: 1vh;
 }
 
+.pageDisplay_div .btn_disabled {
+  cursor: not-allowed;
+  color: lightgray;
+}
+
+.pageDisplay_div .btn_disabled:hover {
+  background-color: none;
+  cursor: not-allowed;
+}
+
 .pageDisplay_div .currentPageText {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
@@ -458,6 +468,15 @@ main {
   cursor: pointer;
 }
 
+.searchResult_container .searchResult_pagesBTN .btn_disabled {
+  cursor: not-allowed;
+  color: lightgray;
+}
+
+.searchResult_container .searchResult_pagesBTN .btn_disabled:hover {
+  cursor: not-allowed;
+}
+
 .searchResult_container .searchResult_pagesBTN p {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -700,6 +719,15 @@ main {
 
 .searchResult_detailed .searchResult_pagesBTN .arrow_icon_right:hover {
   cursor: pointer;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .btn_disabled {
+  cursor: not-allowed;
+  color: lightgray;
+}
+
+.searchResult_detailed .searchResult_pagesBTN .btn_disabled:hover {
+  cursor: not-allowed;
 }
 
 .searchResult_detailed .searchResult_pagesBTN p {

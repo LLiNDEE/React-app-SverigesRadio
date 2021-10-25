@@ -32,7 +32,14 @@
             border-radius: 1vh;
         }
     }
-
+    .btn_disabled{
+        cursor: not-allowed;
+        color: lightgray;
+        &:hover{
+            background-color: none;
+            cursor: not-allowed;
+        }
+    }
     .currentPageText{
         grid-area: text;
         color: dimgray;
